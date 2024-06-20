@@ -1,0 +1,17 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "This is the backend series",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sadam",
+  "license": "ISC",
+  "dependencies": {
+    "expresss": "^0.0.0",
+    "fs": "^0.0.1-security",
+    "nodemon": "^3.1.4",
+    "os": "^0.1.2"
+  }
+}
