@@ -19,3 +19,12 @@ const uniquedata = ["person", "person", 1, 2, 1, 2, "name", "age", "age"];
 var filter = _.uniq(uniquedata);
 console.log(filter);
 console.log(_.isString("sadam"));
+
+const jsondata = {
+  name: "Sadam",
+  f_name: "Muneer Abbas",
+};
+console.log(jsondata);
+const jsonstringfied = JSON.stringify(jsondata);
+console.log(typeof jsonstringfied);
+console.log(typeof JSON);
