@@ -3,6 +3,7 @@ const mongodb_URL = "mongodb://127.0.0.1:27017/hotels";
 
 mongoose.connect(mongodb_URL, {
   useUnifiedTopology: true,
+  useNewUrlParser: true,
 });
 
 const db = mongoose.connection;
