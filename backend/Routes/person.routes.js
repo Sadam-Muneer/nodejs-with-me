@@ -47,4 +47,29 @@ router.get("/:role", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+//update the record of person's data
+router.put("/:id", async (req, res) => {
+  try {
+    const personId = req.params.id;
+    const updatePerosonData = req.body;
+
+    const response = await person.findByIdAndUpdate(
+      personId,
+      updatePerosonData,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    if (!response) {
+      res.status(404).json({ error: "Person not found" });
+    }
+    console.log("Record updated");
+    res.status(200).json(response);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 module.exports = router;
