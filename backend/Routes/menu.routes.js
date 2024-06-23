@@ -44,20 +44,20 @@ router.get("/:taste", async (req, res) => {
   }
 });
 
-//update the record of person's data
+//update the record of menu data
 
 router.put("/:id", async (req, res) => {
   try {
-    const personId = req.params.id;
-    const updatePersonData = req.body;
+    const menuId = req.params.id;
+    const updateMenuData = req.body;
 
-    const response = await Menu.findByIdAndUpdate(personId, updatePersonData, {
+    const response = await Menu.findByIdAndUpdate(menuId, updateMenuData, {
       new: true,
       runValidators: true,
     });
 
     if (!response) {
-      return res.status(404).json({ error: "Person not found" });
+      return res.status(404).json({ error: "Menu not found" });
     }
 
     console.log("Record updated");
@@ -68,14 +68,14 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-//DELETE the record of person's data
+//DELETE the record of menu data
 
 router.delete("/:id", async (req, res) => {
   try {
-    const personId = req.params.id;
-    const response = await Menu.findByIdAndDelete(personId);
+    const menuId = req.params.id;
+    const response = await Menu.findByIdAndDelete(menuId);
     if (!response) {
-      return res.status(404).json({ error: "Person not found" });
+      return res.status(404).json({ error: "Menu not found" });
     }
     console.log("Record deleted");
     res.status(200).json(response);
