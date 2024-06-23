@@ -31,11 +31,17 @@ const PersonSchema = new mongoose.Schema({
       trim: true,
     },
   },
+  role: {
+    type: String,
+    enum: ["chef", "manager", "waiter"],
+    required: true,
+  },
   created_at: {
     type: Date,
     default: Date.now,
   },
 });
-//create persons model
-const person = mongoose.model("person", PersonSchema);
-module.exports = person;
+
+// Create persons model
+const Person = mongoose.model("Person", PersonSchema);
+module.exports = Person;
