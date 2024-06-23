@@ -25,4 +25,22 @@ router.get("/", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+router.get("/:taste", async (req, res) => {
+  try {
+    const taste = req.params.taste;
+    if (taste === "sweet" || taste === "salty" || taste === "bitter") {
+      const response = await Menu.find({ taste: taste });
+      console.log("Response fetched successfully");
+      res.status(200).json(response);
+    } else {
+      res
+        .status(404)
+        .json({ error: "please choose one between sweet , salty or bitter" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 module.exports = router;

@@ -23,6 +23,11 @@ const MenuSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  taste: {
+    type: String,
+    enum: ["sweet", "salty", "bitter"],
+    required: true,
+  },
   created_at: {
     type: Date,
     default: Date.now,
