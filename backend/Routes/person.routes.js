@@ -49,23 +49,43 @@ router.get("/:role", async (req, res) => {
 });
 
 //update the record of person's data
+
 router.put("/:id", async (req, res) => {
   try {
     const personId = req.params.id;
-    const updatePerosonData = req.body;
+    const updatePersonData = req.body;
 
     const response = await person.findByIdAndUpdate(
       personId,
-      updatePerosonData,
+      updatePersonData,
       {
         new: true,
         runValidators: true,
       }
     );
+
     if (!response) {
-      res.status(404).json({ error: "Person not found" });
+      return res.status(404).json({ error: "Person not found" });
     }
+
     console.log("Record updated");
+    res.status(200).json(response);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+//DELETE the record of person's data
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const personId = req.params.id;
+    const response = await person.findByIdAndDelete(personId);
+    if (!response) {
+      return res.status(404).json({ error: "Person not found" });
+    }
+    console.log("Record deleted");
     res.status(200).json(response);
   } catch (error) {
     console.log(error);
