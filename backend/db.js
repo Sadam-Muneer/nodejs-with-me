@@ -1,10 +1,8 @@
 const mongoose = require("mongoose");
-const mongodb_URL = "mongodb://127.0.0.1:27017/hotels";
+const mongodb_URL =
+  "mongodb+srv://sadammuneer390:oTPEjzFGWucshKqM@cluster0.camdtdj.mongodb.net";
 
-mongoose.connect(mongodb_URL, {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-});
+mongoose.connect(mongodb_URL);
 
 const db = mongoose.connection;
 db.on("connected", () => {
@@ -16,5 +14,4 @@ db.on("error", (err) => {
 db.on("disconnected", () => {
   console.log("db is disconnected");
 });
-
 module.exports = db;
