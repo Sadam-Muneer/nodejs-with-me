@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
-const mongodb_URL =
-  "mongodb+srv://sadammuneer390:oTPEjzFGWucshKqM@cluster0.camdtdj.mongodb.net";
-
+require("dotenv").config();
+const mongodb_URL = process.env.Online_mongodb_URL;
 mongoose.connect(mongodb_URL);
-
 const db = mongoose.connection;
 db.on("connected", () => {
   console.log("db is connected");
