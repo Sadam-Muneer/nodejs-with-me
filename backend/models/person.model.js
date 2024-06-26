@@ -30,6 +30,15 @@ const PersonSchema = new mongoose.Schema({
       type: String,
       trim: true,
     },
+    usrname: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    passsword: {
+      type: String,
+      required: true,
+    },
   },
   role: {
     type: String,
